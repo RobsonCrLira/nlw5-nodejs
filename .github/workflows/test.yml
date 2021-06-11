@@ -23,4 +23,4 @@ jobs:
            run: yarn
 
          - name: Check linting
-           run: yarn linting
+           run: yarn lint
