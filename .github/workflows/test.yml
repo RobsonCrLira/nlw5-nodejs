@@ -3,24 +3,24 @@ name: Test
 on:
    push:
       branches: [main]
-   pull_request:
-      branches: [main]
 
 jobs:
    build:
       runs-on: ubuntu-latest
 
       steps:
-         - uses: actions/checkout@v2
+         - name: Checkout repository
+           uses: actions/checkout@v2
+           with:
+              fetch-depth: 0
+
          - name: Use Node.js 14.15.5
            uses: actions/setup-node@v1
            with:
               node-version: 14.x
 
-         - name: yarn install
-         - run: yarn
+         - name: Install depencias
+           run: yarn
 
          - name: Check linting
-         - run: yarn lint
-           env:
-              CI: true
+           run: yarn linting
