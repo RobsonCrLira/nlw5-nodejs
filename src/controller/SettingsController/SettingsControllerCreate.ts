@@ -1,19 +1,21 @@
 /* eslint class-methods-use-this: ["error", { "exceptMethods": ["execute"] }] */
 import { Request, Response } from 'express';
-import { getCustomRepository } from 'typeorm';
-import { SettingsRepository } from '../../Repositories/SettingsRepository';
+
+import { SettingsServices } from '../../services/SettingsServices';
 
 class SettingsControllerCreate {
-   async execute(request: Request, response: Response) {
+   async execute(request: Request, response: Response): Promise<Response> {
       const { chat, username } = request.body;
 
-      const settingsRepository = getCustomRepository(SettingsRepository);
+      const settingsServices = new SettingsServices();
 
-      const settings = settingsRepository.create({ chat, username });
+      try {
+         const settings = await settingsServices.execute({ chat, username });
 
-      await settingsRepository.save(settings);
-
-      return response.json(settings);
+         return response.status(201).json(settings);
+      } catch (error) {
+         return response.status(404).json(error);
+      }
    }
 }
 

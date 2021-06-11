@@ -1,21 +1,27 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import {
+   Column,
+   CreateDateColumn,
+   Entity,
+   PrimaryColumn,
+   UpdateDateColumn,
+} from 'typeorm';
 import { v4 as uuid } from 'uuid';
 
-@Entity('setting')
+@Entity('settings')
 class Setting {
    @PrimaryColumn()
-   id: String;
+   id: string;
 
    @Column()
-   username: String;
+   username: string;
 
    @Column()
    chat: boolean;
 
-   @Column()
+   @UpdateDateColumn()
    updated_at: Date;
 
-   @Column()
+   @CreateDateColumn()
    created_at: Date;
 
    constructor() {
