@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 
-import { UsersServices } from '../../services/UsersServices';
+import { UsersServices } from '../services/UsersServices';
 
-class UsersControllerCreate {
+class UsersController {
    async execute(request: Request, response: Response): Promise<Response> {
       const { email } = request.body;
       const userServices = new UsersServices();
@@ -16,4 +16,4 @@ class UsersControllerCreate {
       }
    }
 }
-export { UsersControllerCreate };
+export { UsersController };

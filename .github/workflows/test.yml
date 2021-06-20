@@ -19,8 +19,5 @@ jobs:
            with:
               node-version: 14.x
 
-         - name: Install depencias
+         - name: Install decencies
            run: yarn
-
-         - name: Check linting
-           run: yarn lint
