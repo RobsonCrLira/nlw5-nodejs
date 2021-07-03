@@ -21,3 +21,6 @@ jobs:
 
          - name: Install decencies
            run: yarn
+         
+         - name: Check linting
+           run: yarn lint

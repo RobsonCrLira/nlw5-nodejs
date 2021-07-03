@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import express from 'express';
 import { createServer } from 'http';
 import path from 'path';
-import { Server, Socket } from 'socket.io';
+import { Server } from 'socket.io';
 
 import './database';
 import { routes } from './routes';
@@ -20,7 +20,7 @@ app.get('/pages/client', (request, response) => response.render('html/client'));
 const http = createServer(app); // Criando protocolo http
 const io = new Server(http); // Criando protocolo WS - WebSocket
 
-io.on('connection', (socket: Socket) => {
+io.on('connection', () => {
    // console.log('Connection', socket.id);
 });
 app.use(express.json());

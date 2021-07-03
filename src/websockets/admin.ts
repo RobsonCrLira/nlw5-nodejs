@@ -38,9 +38,9 @@ io.on('connect', async socket => {
       const { user_id } = params;
       await connectionsServices.updateAdminID(user_id, socket.id);
 
-      const allConnectionsWithoutAdmin =
+      const allConnectionsWithoutAdmin2 =
          await connectionsServices.findAllWithoutAdmin();
 
-      io.emit('admin_list_all_users', allConnectionsWithoutAdmin);
+      io.emit('admin_list_all_users', allConnectionsWithoutAdmin2);
    });
 });
